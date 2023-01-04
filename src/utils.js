@@ -147,6 +147,12 @@ class utils {
     return this.checkMonthDisabled(this.getFormated(dateWithNewMonth));
   };
 
+  setCustomNames = (data) => {
+    gregorianConfigs.monthNames = data.monthNames;
+    gregorianConfigs.dayNamesShort = data.dayNamesShort;
+    gregorianConfigs.dayNames = data.dayNames;
+  }
+
   validYear = (time, year) => {
     const {minimumDate, maximumDate, isGregorian} = this.data;
     const date = isGregorian ? this.getDate(time).year(year) : this.getDate(time).jYear(year);
