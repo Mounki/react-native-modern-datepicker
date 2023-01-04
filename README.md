@@ -165,6 +165,39 @@ const MonthYearExample = () => {
 };
 ```
 
+### Localization
+
+```js
+import { setCustomNames } from 'react-native-modern-datepicker';
+
+// you can use the utility  to set custom days and months
+  setCustomNames({
+    dayNames: [
+      'Dimanche',
+      'Lundi',
+      'Mardi',
+      'Mercredi',
+      'Jeudi',
+      'Vendredi',
+      'Samedi',
+    ],
+    dayNamesShort: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
+    monthNames: [
+      'Janvier',
+      'Février',
+      'Mars',
+      'Avril',
+      'Mai',
+      'Juin',
+      'Juillet',
+      'Aout',
+      'Septembre',
+      'Octobre',
+      'Novembre',
+      'Décembre',
+    ],
+  });
+```
 
 ##### For more examples and more details about used props please check
 ### [https://hosseinshabani.github.io/react-native-modern-datepicker/](https://hosseinshabani.github.io/react-native-modern-datepicker/)
