@@ -25,6 +25,7 @@ const SelectMonth = () => {
     minimumDate,
     maximumDate,
     onMonthYearChange,
+    disabledMonths
   } = useCalendar();
   const [mainState, setMainState] = state;
   const [show, setShow] = useState(false);
@@ -80,6 +81,17 @@ const SelectMonth = () => {
       setYear(utils.toPersianNumber(text));
     }
   };
+  /**
+   * 
+   * @param {number} month  // accepts months as short numbers ex: 1,2,3...
+   * @param {number} year // accepts years as number
+   * @returns boolean
+   */
+  const isMonthDisabled= (month, )=> {
+    return disabledMonths? disabledMonths.filter(item => {
+      return (parseInt(item.month,10) === parseInt(month,10) && parseInt(item.year,10) === parseInt(utils.toEnglish(year),10))
+    }).length : false;
+  }
 
   const onSelectYear = number => {
     let y = Number(utils.toEnglish(year)) + number;
@@ -147,10 +159,11 @@ const SelectMonth = () => {
           const disabled = utils.checkSelectMonthDisabled(mainState.activeDate, item);
           return (
             <TouchableOpacity
+              disabled={isMonthDisabled(item+1)}
               key={item}
-              activeOpacity={0.8}
-              style={[style.item, currentMonth === item + 1 && style.selectedItem]}
-              onPress={() => !disabled && onSelectMonth(item)}>
+              activeOpacity={0.2}
+              style={[style.item, currentMonth === item + 1 && style.selectedItem, {opacity: isMonthDisabled(item+1,)? 0.1: 1}]}
+              onPress={() => !disabled && !isMonthDisabled(item+1,) && onSelectMonth(item)}>
               <Text
                 style={[
                   style.itemText,
@@ -166,6 +179,8 @@ const SelectMonth = () => {
     </Animated.View>
   ) : null;
 };
+
+
 
 const styles = theme =>
   StyleSheet.create({
